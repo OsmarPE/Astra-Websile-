@@ -1,113 +1,188 @@
+import AnimationSection from "@/components/AnimationSection";
+import Badge from "@/components/Badge";
+import FeatureCard from "@/components/cards/FeatureCard";
+import PlanCard from "@/components/cards/PlanCard";
+import StepCard from "@/components/cards/StepCard";
+import TestimonyCard from "@/components/cards/TestimonyCard";
+import Container from "@/components/Container";
+import HeadSection from "@/components/HeadSection";
+import ImageMain from "@/components/ImageMain";
+import Header from "@/components/layout/Header";
+import Main from "@/components/layout/Main";
+import Section from "@/components/Section";
+import { Button } from "@/components/ui/button";
+import Marquee from "@/components/ui/Marquee";
+import { FEATURES, PLANS, STEPS, TESTIMONIES } from "@/utils/helpers";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { Lamp } from '@/components/ui/Lamp'
+import Link from "next/link";
+import Icons from "@/components/Icon";
+import Footer from "@/components/layout/Footer";
+import LightCircle from "@/components/LightCircle";
+import Form from "@/components/Form";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <>
+      <Header />
+      <Main>
+        <Section className="relative">
+          <AnimationSection>
+            <div className="max-w-3xl w-[90%] lg:w-full mx-auto isolate z-50">
+              <Badge>Introducing Astra AI</Badge>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl  mt-8 mb-6 font-semibold text-pretty bg-clip-text md:!leading-snug bg-gradient-to-b from-gray-50 to-gray-100 text-transparent">Build your next idea and ship your dream site </h1>
+              <p className="text-base md:text-lg leading-normal md:leading-snug  text-foreground/80">Zero code, maximum speed. Make professional sites easy, fast and fun while delivering best-in-class SEO, performance.</p>
+              <Link href='/' className="hidden lg:flex items-center border-t border-t-foreground/30 shadow shadow-background/40 backdrop-blur-lg gap-4 mt-8 w-max mx-auto p-2 rounded-full bg-white/20 ">
+                <span className="font-medium inline-block pl-4"> ✨ Start building your dream website now!</span>
+                <Button className="rounded-3xl ring-foreground/20 ring-1 inline-flex gap-1">Get Started <ArrowRight width={20} /> </Button>
+              </Link>
+              <ImageMain />
+            </div>
+            <div className="absolute inset-0 dark:bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[linear-gradient(to_right,#161616_1px,transparent_1px),linear-gradient(to_bottom,#161616_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] -z-10 "></div>
+          </AnimationSection>
+        </Section>
+        <Section>
+          <AnimationSection>
+            <HeadSection
+              sectionName="The Process"
+              title="Three steps to build your dream website"
+              description="Turn your vision into reality in just 3 simple steps" />
+            <Container>
+
+              <div className="grid lg:grid-cols-3 mt-12">
+                {
+                  STEPS.map(({ title, description, icon }) => (
+                    <StepCard
+                      title={title}
+                      description={description}
+                      icon={icon}
+                    />
+                  ))
+                }
+              </div>
+
+            </Container>
+          </AnimationSection>
+        </Section>
+        <Section className="relative">
+          <AnimationSection>
+            <HeadSection
+              sectionName="Features"
+              title="Discover our powerful features"
+              description="Astra offers a range of features to help you build a stunning website in no time"
+
             />
-          </a>
-        </div>
-      </div>
+            <Image src='/assets/feature.svg' alt="image of feature" width={200} height={200} className="mx-auto w-full max-w-64 mt-8" />
+            <Container>
+              <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
+                {
+                  FEATURES.map(({ description, icon, title }) => (
+                    <FeatureCard
+                      title={title}
+                      description={description}
+                      icon={icon}
+                    />
+                  ))
+                }
+              </div>
+            </Container>
+            <LightCircle className="top-[20%]  -right-[20%]"/>
+          </AnimationSection>
+        </Section>
+        <Section className="relative">
+          <AnimationSection>
+            <HeadSection
+              sectionName="Pricing"
+              title="Unlock the right plan for your business"
+              description="Choose the best plan for your business and start building your dream website today"
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+            />
+            <Container>
+              <div className="grid gap-6 lg:grid-cols-3 mt-8">
+                {
+                  PLANS.map(({ features, href, main, price, text, textButton, type }) => (
+                    <PlanCard
+                      features={features}
+                      href={href}
+                      main={main}
+                      price={price}
+                      text={text}
+                      textButton={textButton}
+                      type={type}
+                    />
+                  ))
+                }
+              </div>
+            </Container>
+            <LightCircle className="bottom-1/3 -left-[18%] "/>
+            <LightCircle className="-top-0 -right-[18%]  "/>
+          </AnimationSection>
+        </Section>
+        <Section>
+          <AnimationSection className="relative">
+            <HeadSection
+              sectionName="Our Customers"
+              title="What people are saying"
+              description="See how Astra empowers businesses of all sizes. Here's what real people are saying on Twitter"
+              className="mb-10"
+            />
+            <Container className="relative">
+              <Marquee reverse pauseOnHover className="[--duration:20s]">
+                {
+                  TESTIMONIES.map(({ name, text, user }) => (
+                    <TestimonyCard
+                      name={name}
+                      user={user}
+                      text={text}
+                    />
+                  ))
+                }
+              </Marquee>
+              <Marquee pauseOnHover className="[--duration:20s]">
+                {
+                  TESTIMONIES.map(({ name, text, user }) => (
+                    <TestimonyCard
+                      name={name}
+                      user={user}
+                      text={text}
+                    />
+                  ))
+                }
+              </Marquee>
+            <div className="absolute bg-gradient-to-r from-background pointer-events-none left-0 top-0 bottom-0 w-1/3"></div>
+            <div className="absolute bg-gradient-to-l from-background pointer-events-none right-0 top-0 bottom-0 w-1/3"></div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+            </Container>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+          </AnimationSection>
+        </Section>
+        <Section>
+          <Container>
+            <Lamp>
+              <div className="relative max-w-3xl mx-auto py-4 translate-y-10 md:translate-y-0">
+                <h2 className="font-semibold md:mt-0 text-4xl lg:text-6xl leading-tight lg:leading-snug max-w-md lg:max-w-none ">From Idea to Launch Faster Than Ever</h2>
+                <p className="text-muted-foreground mt-4 mb-8 max-w-md mx-auto">Build stunning websites with Astra's intuitive drag-and-drop builder and powerful AI assistant</p>
+                <Link href={'/'} className="py-2.5 px-5 text-sm rounded-md bg-foreground text-black font-medium flex items-center gap-2 w-max mx-auto">
+                  Get started to Free
+                  <ArrowRight className="size-4" />
+                </Link>
+              </div>
+            </Lamp>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+          </Container>
+        </Section>
+        <Section className="py-10 text-left" >
+          <AnimationSection>
+            <Container>
+             <Form/>
+            </Container>
+          </AnimationSection>
+        </Section>
+      </Main>
+      <Footer />
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </>
+
   );
 }
