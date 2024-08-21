@@ -17,7 +17,6 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Lamp } from '@/components/ui/Lamp'
 import Link from "next/link";
-import Icons from "@/components/Icon";
 import Footer from "@/components/layout/Footer";
 import LightCircle from "@/components/LightCircle";
 import Form from "@/components/Form";
