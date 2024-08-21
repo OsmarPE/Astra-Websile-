@@ -7,7 +7,7 @@ import AnimationSection from "../AnimationSection";
 export default function Header() {
     return (
         <header className="border-b border-b-border sticky top-0 backdrop-blur-lg z-30">
-            <AnimationSection reserve className="h-14 w-[90%] max-w-6xl mx-auto flex items-center justify-between">
+            <AnimationSection reserve className="h-16 w-[90%] max-w-6xl mx-auto flex items-center justify-between">
                 <Link href="#" className="flex items-center gap-3">
                     <Image src={'/assets/icon.png'} alt="logo" width={24} height={24} className="size-6" />
                     Astra
